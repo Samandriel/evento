@@ -1,0 +1,18 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "foundation-rails"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor/modernizr"
+    = csrf_meta_tags
+  %body
+    - if user_signed_in?
+      =link_to "#{current_user.email}"
+      =link_to "Logout", destroy_user_session_path, moethod: :delete
+    - else
+      =link_to "Login", new_user_session_path
+      =link_to "Signup", new_user_registration_path 
+    = yield
+    = javascript_include_tag "application"
