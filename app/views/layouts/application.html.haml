@@ -9,11 +9,22 @@
     = csrf_meta_tags
   %body
     .top-bar
-      - if user_signed_in?
-        =link_to "#{current_user.email}"
-        =link_to "Logout", destroy_user_session_path, method: :delete
-      - else
-        =link_to "Login", new_user_session_path
-        =link_to "Signup", new_user_registration_path  
-      = yield
-      = javascript_include_tag "application"
+      .top-bar-section
+        .title-area
+          .name
+            %ul
+              %li 
+                %h1=link_to Evento, root_path
+        .left
+          %ul
+            %li=link_to "Event", events_path        
+        .right
+          %ul
+            - if user_signed_in?
+              %li=link_to "#{current_user.email}"
+              %li=link_to "Logout", destroy_user_session_path, method: :delete
+            - else
+              %li=link_to "Login", new_user_session_path
+              %li=link_to "Signup", new_user_registration_path  
+    = yield
+    = javascript_include_tag "application"
