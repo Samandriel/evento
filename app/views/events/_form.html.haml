@@ -14,11 +14,11 @@
   .field
     = f.label :start_date
     %br/
-    = f.datetime_select :start_date
+    = f.text_field :start_date
   .field
     = f.label :end_date
     %br/
-    = f.datetime_select :end_date
+    = f.text_field :end_date
   .field
     = f.label :location
     %br/
@@ -31,5 +31,9 @@
     = f.label :address
     %br/
     = f.text_area :address
+  .field
+    = f.label :tag_list, "Tags (seperated by commas)"
+    %br/
+    = f.text_field :tag_list
   .actions
     = f.submit

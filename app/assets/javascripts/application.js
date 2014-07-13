@@ -11,9 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+$(function(){ $("#event_start_date").datepicker({ dateFormat: 'dd-mm-yy'}); });
+$(function(){ $("#event_end_date").datepicker({ dateFormat: 'dd-mm-yy'}); });

@@ -16,9 +16,12 @@
 
  */
 @import "foundation_and_overrides";
+@import "jquery.ui.all";
 
 .title-area
   .name {
       text-transform: uppercase;
     }
-
+.s {font-size: 0.75rem;}
+.m {font-size: 1.2rem;}
+.l {font-style: 1.5rem;}

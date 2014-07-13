@@ -9,6 +9,7 @@
       %th Agenda
       %th Address
       %th Organizer
+      %th Tags
       %th Posted
       %th Updated
       %th{:colspan => "3"}
@@ -23,6 +24,7 @@
         %td= event.address
         - @event_owner = event.event_owner(event.organizer_id)  #remember this
         %td= @event_owner.email
+        %td= raw event.tag_list.map {|t| link_to t, tag_path(t)}.join(', ')
         %td= event.posted
         %td= event.updated
         %td= link_to 'Show', event

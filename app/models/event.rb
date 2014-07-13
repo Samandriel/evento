@@ -1,6 +1,8 @@
 class Event < ActiveRecord::Base
 	belongs_to :organizers, class_name: "User"
 
+	acts_as_taggable
+
 	extend FriendlyId
   	friendly_id :slug_candidates, use: :slugged
 
