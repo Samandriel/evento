@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event_owner = @event.event_owner(@event.organizer_id)
   end
 
   # GET /events/new
@@ -64,8 +65,16 @@ class EventsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def event_owner!
+      authenticate_user!
+      if @event.organizer_id != current_user.id
+        redirect_to events_path
+        flash[:notice] = "You do not have enough permission to do this"
+      end  
+    end
+
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -4,10 +4,10 @@
   = @event.title
 %p
   %strong Start date:
-  = @event.start_date
+  = @event.start_date.strftime("%d %B %Y")
 %p
   %strong End date:
-  = @event.end_date
+  = @event.end_date.strftime("%d %B %Y")
 %p
   %strong Location:
   = @event.location
@@ -19,13 +19,8 @@
   = @event.address
 %p
   %strong Organizer:
-  = @event.organizer_id
-%p
-  %strong Posted:
-  = @event.posted
-%p
-  %strong Updated:
-  = @event.updated
+  = @event_owner.email
+
 = link_to 'Edit', edit_event_path(@event)
 |
 \#{link_to 'Back', events_path}

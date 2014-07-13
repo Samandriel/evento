@@ -16,12 +16,13 @@
     - @events.each do |event|
       %tr
         %td= event.title
-        %td= event.start_date.strftime("%d/%B/%Y")
-        %td= event.end_date.strftime("%d/%B/%Y")
+        %td= event.start_date.strftime("%d %B %Y")
+        %td= event.end_date.strftime("%d %B %Y")
         %td= event.location
         %td= event.agenda
         %td= event.address
-        %td= event.organizer_id
+        - @event_owner = event.event_owner(event.organizer_id)  #remember this
+        %td= @event_owner.email
         %td= event.posted
         %td= event.updated
         %td= link_to 'Show', event
